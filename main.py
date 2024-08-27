@@ -1,10 +1,16 @@
+from add_to_db import engine, PhonesTable
 from whatsapp import WhatsApp
 
-mobile_numbers_list = [
-    # тут писать номера в формате чисел - пример: 77071234567, 7701...
-]
+from sqlalchemy.orm import sessionmaker
 
 if __name__ == '__main__':
+    Session = sessionmaker(bind=engine)
+    session = Session()
+
+    phones_list = session.query(PhonesTable).filter(PhonesTable.status == 'waiting').all()
+
     whatsapp = WhatsApp()
-    for mobile_number in mobile_numbers_list:
-        whatsapp.send_message_to_number(mobile_number, 'Тут писать текст который хотите чтобы был отправлен...')
+    for item in phones_list:
+        whatsapp.send_message_to_number(phone_no='7' + item.phone, text='')
+        item.status = 'sended'
+        session.commit()
