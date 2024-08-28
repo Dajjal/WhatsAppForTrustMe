@@ -9,6 +9,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 
 class WhatsApp:
+    counter = 1
 
     # Конструктор
     def __init__(self):
@@ -25,7 +26,7 @@ class WhatsApp:
 
     # Основной метод для отправки сообщения
     # параметры: номер телефона и текст который хотите передать
-    def send_message_to_number(self, phone_no, text, record=None):
+    def send_message_to_number(self, phone_no, record):
         try:
             self.driver.get('https://web.whatsapp.com/send?phone={}&source=&data=#'.format(phone_no))
             sleep(5)
@@ -34,30 +35,126 @@ class WhatsApp:
             txt_box = self.driver.find_element(By.XPATH, text_input)
             txt_box.click()
 
-            txt_box.send_keys('200 тыс. вместо 3 млн.тг.')
-            p = txt_box.find_elements(By.TAG_NAME, 'p')[0].find_element(By.TAG_NAME, 'span')
-            self.driver.execute_script("arguments[0].innerHTML += arguments[1];", p, '🚀')
-            txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
-            txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
-            txt_box.send_keys('29 августа в TrustMe пройдет "День продаж" с Бейбитом Алибековым!')
-            txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
-            txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
-            txt_box.send_keys('Оплати за сервис подписания договоров онлайн TrustContract от 200 тыс и получи возможность рассказать о своем бизнесе в сторис у Алибеков!')
-            txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
-            txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
-            txt_box.send_keys('Позвоните по номеру: +77078701904')
-            txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
-            txt_box.send_keys('или оставьте заявку по ссылке: https://trustmekz.bitrix24.site/mail/')
-            txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
-            txt_box.send_keys('(нужно ответить на сообщение, чтобы нажать на ссылку)')
+            if self.counter == 1:
+                txt_box.send_keys('200 тыс. вместо 3 млн.тг.')
+                txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
+                txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
+                txt_box.send_keys('29 августа в TrustMe пройдет "День продаж" с Бейбитом Алибековым!')
+                txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
+                txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
+                txt_box.send_keys('Оплати за сервис подписания договоров онлайн TrustContract от 200 тыс и получи возможность рассказать о своем бизнесе в сторис у Алибеков!')
+                txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
+                txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
+                txt_box.send_keys('Позвоните по номеру: +77078701904')
+                txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
+                txt_box.send_keys('или оставьте заявку по ссылке: https://trustmekz.bitrix24.site/mail/')
+                txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
+                txt_box.send_keys('(если вы ознакомились с данной информацией, напишите в ответ любой текст)')
+            elif self.counter == 2:
+                txt_box.send_keys(f'Здравствуйте!')
+                txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
+                txt_box.send_keys(
+                    'Команда TrustMe рада сообщить вам, что в этот четверг (29авг) у нас особенное событие — «День продаж» с известным блогером- Алибековым!  Не упустите возможность стать известным и кратно увеличить прибыль!')
+                txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
+                txt_box.send_keys('Позвоните по номеру: +77078701904')
+                txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
+                txt_box.send_keys('или оставьте заявку по ссылке: https://trustmekz.bitrix24.site/mail/')
+                txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
+                txt_box.send_keys('(если вы ознакомились с данной информацией, напишите в ответ любой текст)')
+            elif self.counter == 3:
+                txt_box.send_keys('29 августа в TrustMe пройдет "День продаж" с Бейбитом Алибековым!')
+                txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
+                txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
+                txt_box.send_keys('200 тыс. вместо 3 млн.тг.')
+                txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
+                txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
+                txt_box.send_keys(
+                    'Оплати за сервис подписания договоров онлайн TrustContract от 200 тыс и получи возможность рассказать о своем бизнесе в сторис у Алибеков!')
+                txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
+                txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
+                txt_box.send_keys('Позвоните по номеру: +77078701904')
+                txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
+                txt_box.send_keys('или оставьте заявку по ссылке: https://trustmekz.bitrix24.site/mail/')
+                txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
+                txt_box.send_keys('(если вы ознакомились с данной информацией, напишите в ответ любой текст)')
+            elif self.counter == 4:
+                txt_box.send_keys(f'Здравствуйте!')
+                txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
+                txt_box.send_keys(
+                    'Команда TrustMe рада сообщить вам, что в этот четверг (29авг) у нас особенное событие — «День продаж» с известным блогером- Алибековым!  Не упустите возможность стать известным и кратно увеличить прибыль!')
+                txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
+                txt_box.send_keys('Оставьте заявку по ссылке: https://trustmekz.bitrix24.site/mail/')
+                txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
+                txt_box.send_keys('или позвоните по номеру: +77078701904')
+                txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
+                txt_box.send_keys('(если вы ознакомились с данной информацией, напишите в ответ любой текст)')
+            elif self.counter == 5:
+                txt_box.send_keys('200 тыс. вместо 3 млн.тг.')
+                txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
+                txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
+                txt_box.send_keys('29 августа в TrustMe пройдет "День продаж" с Бейбитом Алибековым!')
+                txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
+                txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
+                txt_box.send_keys(
+                    'Оплати за сервис подписания договоров онлайн TrustContract от 200 тыс и получи возможность рассказать о своем бизнесе в сторис у Алибеков!')
+                txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
+                txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
+                txt_box.send_keys('Оставьте заявку по ссылке: https://trustmekz.bitrix24.site/mail/')
+                txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
+                txt_box.send_keys('или позвоните по номеру: +77078701904')
+                txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
+                txt_box.send_keys('(если вы ознакомились с данной информацией, напишите в ответ любой текст)')
+            elif self.counter == 6:
+                txt_box.send_keys(
+                    'Команда TrustMe рада сообщить вам, что в этот четверг (29авг) у нас особенное событие — «День продаж» с известным блогером- Алибековым!  Не упустите возможность стать известным и кратно увеличить прибыль!')
+                txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
+                txt_box.send_keys('Позвоните по номеру: +77078701904')
+                txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
+                txt_box.send_keys('или оставьте заявку по ссылке: https://trustmekz.bitrix24.site/mail/')
+                txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
+                txt_box.send_keys('(если вы ознакомились с данной информацией, напишите в ответ любой текст)')
+            elif self.counter == 7:
+                txt_box.send_keys('29 августа в TrustMe пройдет "День продаж" с Бейбитом Алибековым!')
+                txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
+                txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
+                txt_box.send_keys('200 тыс. вместо 3 млн.тг. Успей приобрести.')
+                txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
+                txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
+                txt_box.send_keys(
+                    'Оплати за сервис подписания договоров онлайн TrustContract от 200 тыс и получи возможность рассказать о своем бизнесе в сторис у Алибеков!')
+                txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
+                txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
+                txt_box.send_keys('(если вы ознакомились с данной информацией, напишите в ответ любой текст)')
+                txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
+                txt_box.send_keys('Позвоните по номеру: +77078701904')
+                txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
+                txt_box.send_keys('или оставьте заявку по ссылке: https://trustmekz.bitrix24.site/mail/')
+            elif self.counter == 8:
+                txt_box.send_keys(
+                    'Команда TrustMe рада сообщить вам, что в этот четверг (29авг) у нас особенное событие — «День продаж» с известным блогером- Алибековым!  Не упустите возможность стать известным и кратно увеличить прибыль!')
+                txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
+                txt_box.send_keys('Оставьте заявку по ссылке: https://trustmekz.bitrix24.site/mail/')
+                txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
+                txt_box.send_keys('или позвоните по номеру: +77078701904')
+                txt_box.send_keys(Keys.CONTROL + Keys.ENTER)
+                txt_box.send_keys('(если вы ознакомились с данной информацией, напишите в ответ любой текст)')
 
+            if self.counter < 8:
+                self.counter += 1
+            elif self.counter == 8:
+                self.counter = 1
 
             txt_box.send_keys(Keys.ENTER)
+            record.status = 'sended'
 
             # Интервал отправки следуещего сообщения в секундах (можно менять)
-            random_number = random.randint(20, 30)
+            random_number = random.randint(30, 90)
             sleep(random_number)
+
+            return True
 
         except Exception as ex:
             print(ex)
             print('invalid phone no :' + str(phone_no))
+
+            return False
