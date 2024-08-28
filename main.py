@@ -7,9 +7,10 @@ if __name__ == '__main__':
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    phones_list = session.query(PhonesTable).filter(PhonesTable.status == 'error').all()
+    phones_list = session.query(PhonesTable).all()
 
     whatsapp = WhatsApp()
-    for item in phones_list:
-        whatsapp.send_message_to_number(phone_no='7' + item.phone, record=item)
-        session.commit()
+    for index, item in enumerate(phones_list):
+        if index < 1000 and item.status == 'waiting':
+            whatsapp.send_message_to_number(phone_no='7' + item.phone, record=item)
+            session.commit()
