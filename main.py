@@ -11,6 +11,7 @@ if __name__ == '__main__':
 
     whatsapp = WhatsApp()
     for index, item in enumerate(phones_list):
-        if index < 1000 and item.status == 'waiting':
-            whatsapp.send_message_to_number(phone_no='7' + item.phone, record=item)
-            session.commit()
+        if item.status == 'waiting':
+            if index < 1000:
+                whatsapp.send_message_to_number(phone_no='7' + item.phone, record=item)
+                session.commit()
